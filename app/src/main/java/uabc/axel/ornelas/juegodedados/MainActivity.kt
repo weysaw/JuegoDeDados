@@ -52,15 +52,15 @@ class MainActivity : AppCompatActivity() {
      */
     override fun onContextItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.reglas -> {
+            R.id.rojo -> {
                 binding.menu.background = ColorDrawable(Color.parseColor("#DB7093"))
                 true
             }
-            R.id.historial -> {
+            R.id.verde -> {
                 binding.menu.background = ColorDrawable(Color.parseColor("#98FB98"))
                 true
             }
-            R.id.reiniciar -> {
+            R.id.azul -> {
                 binding.menu.background = ColorDrawable(Color.parseColor("#87CEEB"))
                 true
             }
@@ -87,6 +87,14 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.historial -> {
                 Toast.makeText(this, "Se ha seleccionado historial", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.humano -> {
+                Toast.makeText(this, "Se ha seleccionado humano", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.compu -> {
+                Toast.makeText(this, "Se ha seleccionado humano", Toast.LENGTH_SHORT).show()
                 true
             }
             R.id.reiniciar -> {
