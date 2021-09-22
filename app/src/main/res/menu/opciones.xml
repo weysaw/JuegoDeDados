@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/reglas"
+        android:title="Reglas" />
+    <item
+        android:id="@+id/historial"
+        android:title="Historial de Puntuaciones" />
+    <item
+        android:id="@+id/reiniciar"
+        android:title="Reiniciar Juego" />
+    <item
+        android:id="@+id/sobre"
+        android:title="Sobre el juego" />
+</menu>
