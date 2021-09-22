@@ -3,12 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/reglas"
+        android:id="@+id/rojo"
         android:title="Rojo" />
     <item
-        android:id="@+id/historial"
+        android:id="@+id/verde"
         android:title="Verde" />
     <item
-        android:id="@+id/reiniciar"
+        android:id="@+id/azul"
         android:title="Azul" />
 </menu>
