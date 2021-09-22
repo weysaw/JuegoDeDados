@@ -6,7 +6,16 @@
         android:title="Reglas" />
     <item
         android:id="@+id/historial"
-        android:title="Historial de Puntuaciones" />
+        android:title="Historial de Puntuaciones" >
+        <menu >
+            <item
+                android:id="@+id/humano"
+                android:title="Humano" />
+            <item
+                android:id="@+id/compu"
+                android:title="Computadora" />
+        </menu>
+    </item>
     <item
         android:id="@+id/reiniciar"
         android:title="Reiniciar Juego" />
