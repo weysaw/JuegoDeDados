@@ -7,6 +7,78 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Balut"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toTopOf="@+id/dado4"
+        app:layout_constraintEnd_toEndOf="@+id/tirar"
+        app:layout_constraintHorizontal_bias="0.657"
+        app:layout_constraintStart_toStartOf="@+id/tirar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.666" />
+
+    <ImageView
+        android:id="@+id/dado1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dado2"
+        app:layout_constraintEnd_toStartOf="@+id/dado2"
+        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dado2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/dado2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dado3"
+        app:layout_constraintEnd_toStartOf="@+id/dado3"
+        app:layout_constraintStart_toEndOf="@+id/dado1"
+        app:layout_constraintTop_toTopOf="@+id/dado3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/dado3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tirar"
+        app:layout_constraintEnd_toEndOf="@+id/tirar"
+        app:layout_constraintStart_toStartOf="@+id/tirar"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <ImageView
+        android:id="@+id/dado4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dado3"
+        app:layout_constraintEnd_toStartOf="@+id/dado5"
+        app:layout_constraintStart_toEndOf="@+id/dado3"
+        app:layout_constraintTop_toTopOf="@+id/dado3"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/dado5"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dado4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.419"
+        app:layout_constraintStart_toEndOf="@+id/dado4"
+        app:layout_constraintTop_toTopOf="@+id/dado4"
+        app:layout_constraintVertical_bias="0.0" />
+
     <Button
         android:id="@+id/tirar"
         android:layout_width="wrap_content"
@@ -19,111 +91,63 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dado" />
+        app:layout_constraintTop_toBottomOf="@+id/dado2" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/puntos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Balut"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/dado3"
-        app:layout_constraintEnd_toEndOf="@+id/tirar"
-        app:layout_constraintHorizontal_bias="0.657"
-        app:layout_constraintStart_toStartOf="@+id/tirar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.666" />
+        android:text="Puntos: "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/puntaje"
+        app:layout_constraintEnd_toEndOf="@+id/ronda"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ronda"
+        app:layout_constraintTop_toTopOf="@+id/puntaje" />
 
-    <ImageView
-        android:id="@+id/dado3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/dado5"
-        app:layout_constraintEnd_toStartOf="@+id/dado4"
-        app:layout_constraintStart_toEndOf="@+id/dado5"
-        app:layout_constraintTop_toTopOf="@+id/dado5"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/dado"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="23dp"
-        android:layout_marginEnd="40dp"
-        app:layout_constraintBottom_toBottomOf="@+id/dado5"
-        app:layout_constraintEnd_toStartOf="@+id/dado5"
-        app:layout_constraintStart_toEndOf="@+id/dado2"
-        app:layout_constraintTop_toTopOf="@+id/dado5"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/dado5"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/tirar"
-        app:layout_constraintEnd_toEndOf="@+id/tirar"
-        app:layout_constraintStart_toStartOf="@+id/tirar"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-    <ImageView
-        android:id="@+id/dado2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/dado"
-        app:layout_constraintEnd_toStartOf="@+id/dado"
-        app:layout_constraintHorizontal_bias="0.024"
+    <TextView
+        android:id="@+id/puntaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center|center_horizontal"
+        android:text="Puntaje Total: "
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/roll"
+        app:layout_constraintEnd_toEndOf="@+id/foursBtn"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/dado"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/tirar" />
 
-    <ImageView
-        android:id="@+id/dado4"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/dado3"
+    <TextView
+        android:id="@+id/ronda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:text="Ronda: / 28"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/roll"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.419"
-        app:layout_constraintStart_toEndOf="@+id/dado3"
-        app:layout_constraintTop_toTopOf="@+id/dado3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/roll"
+        app:layout_constraintTop_toTopOf="@+id/roll" />
 
     <Button
         android:id="@+id/foursBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
+        android:enabled="false"
         android:text="fours"
         app:layout_constraintBottom_toTopOf="@+id/fivesBtn"
         app:layout_constraintEnd_toEndOf="@+id/fivesBtn"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fivesBtn"
-        app:layout_constraintTop_toBottomOf="@+id/puntaje" />
-
-    <TextView
-        android:id="@+id/puntaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:gravity="center|center_horizontal"
-        android:text="Puntaje Total: "
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/foursBtn"
-        app:layout_constraintEnd_toEndOf="@+id/foursBtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tirar" />
+        app:layout_constraintStart_toStartOf="@+id/fivesBtn" />
 
     <Button
         android:id="@+id/fivesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:enabled="false"
         android:text="Fives"
         app:layout_constraintBottom_toTopOf="@+id/sixesBtn"
         app:layout_constraintEnd_toEndOf="@+id/sixesBtn"
@@ -134,6 +158,7 @@
         android:id="@+id/sixesBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="sixes"
         app:layout_constraintBottom_toTopOf="@+id/straightBtn"
         app:layout_constraintEnd_toEndOf="@+id/straightBtn"
@@ -143,6 +168,7 @@
         android:id="@+id/straightBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="Straight"
         app:layout_constraintBottom_toTopOf="@+id/fullHouseBtn"
         app:layout_constraintStart_toStartOf="@+id/fullHouseBtn" />
@@ -152,6 +178,7 @@
         android:layout_width="107dp"
         android:layout_height="53dp"
         android:layout_marginBottom="8dp"
+        android:enabled="false"
         android:text="Full House"
         app:layout_constraintBottom_toTopOf="@+id/choiceBtn"
         app:layout_constraintEnd_toEndOf="@+id/choiceBtn"
@@ -163,6 +190,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:enabled="false"
         android:text="Choice"
         app:layout_constraintBottom_toTopOf="@+id/balutBtn"
         app:layout_constraintEnd_toEndOf="@+id/balutBtn"
@@ -173,25 +201,12 @@
         android:id="@+id/balutBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="Balut"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tablero"
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/puntos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:text="Puntos: "
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/puntaje"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
-        app:layout_constraintStart_toEndOf="@+id/puntaje"
-        app:layout_constraintTop_toTopOf="@+id/puntaje"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TableLayout
         android:id="@+id/tablero"
@@ -205,40 +220,62 @@
         app:layout_constraintVertical_bias="0.9">
 
         <TableRow
-            android:id="@+id/balutTabla"
-            android:layout_width="match_parent"
-            android:layout_height="14dp" />
-
-        <TableRow
             android:id="@+id/foursTabla"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <TableRow
             android:id="@+id/fivesTabla"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <TableRow
             android:id="@+id/sixesTabla"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <TableRow
             android:id="@+id/straightTabla"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <TableRow
             android:id="@+id/fullHouseTabla"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
         <TableRow
             android:id="@+id/choiceTabla"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/balutTabla"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
 
     </TableLayout>
+
+    <TextView
+        android:id="@+id/roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
+        android:text="Roll:  / 3"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/foursBtn"
+        app:layout_constraintEnd_toEndOf="@+id/foursBtn"
+        app:layout_constraintStart_toStartOf="@+id/foursBtn"
+        app:layout_constraintTop_toBottomOf="@+id/puntaje" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
