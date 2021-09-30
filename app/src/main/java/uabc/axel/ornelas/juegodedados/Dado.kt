@@ -5,7 +5,7 @@ import android.widget.ImageView
 
 class Dado(private var cara: ImageView) {
     var presionado = false
-        private set(valor) {
+       private set(valor) {
             field = valor
             cara.setBackgroundColor(if (presionado) Color.RED else 0)
         }
@@ -59,6 +59,9 @@ class Dado(private var cara: ImageView) {
         presionado = !presionado
     }
 
+    /**
+     * Cuando es el primer lanzamiento ya se pueden presionar los dados
+     */
     fun primerLanzamiento() {
         //Cada vez que se presiona el boton realiza la acción
         cara.setOnClickListener {
