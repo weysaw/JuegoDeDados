@@ -17,31 +17,68 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val texto = arrayListOf<TextView>()
-        //Agregar fours
-        for (i in 1..4) {
-            val textView = TextView(applicationContext)
-            textView.text = i.toString()
-            textView.textSize = 24.0f
-            textView.gravity = Gravity.CENTER
-            val parametros = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT)
-            parametros.weight = 1.0f
-            textView.layoutParams = parametros
-            textView.background = getDrawable(R.drawable.borde)
-            binding.foursTabla.addView(textView)
-            texto.add(textView)
+        with(binding) {
+            val filaFours = Fila(inicializarFila(foursTabla), foursBtn)
+            val filaFives = Fila(inicializarFila(fivesTabla), fivesBtn)
+            val filaSixes = Fila(inicializarFila(sixesTabla), sixesBtn)
+            val filaStraight = Fila(inicializarFila(straightTabla), straightBtn)
+            val filaFullHouse = Fila(inicializarFila(fullHouseTabla), fullHouseBtn)
+            val filaChoice = Fila(inicializarFila(choiceTabla), choiceBtn)
+            val filaBalut = Fila(inicializarFila(balutTabla), balutBtn)
+            val dados = inicializarImagenes()
+            val tablero = arrayOf(filaFours,
+                filaFives,
+                filaSixes,
+                filaStraight,
+                filaFullHouse,
+                filaChoice,
+                filaBalut)
+            juego = Balut(dados, tablero)
         }
+        //Se agrega el fondo para que se cambia el fondo
+        registerForContextMenu(binding.menu)
+    }
+
+    /**
+     *
+     */
+    private fun inicializarImagenes(): Array<Dado> {
         // Se asigna el arreglo de dados
-        val dados = arrayOf(
-            Dado(binding.dado),
+        return arrayOf(
+            Dado(binding.dado1),
             Dado(binding.dado2),
             Dado(binding.dado3),
             Dado(binding.dado4),
             Dado(binding.dado5)
         )
-        juego = Balut(dados)
-        //Se agrega el fondo para que se cambia el fondo
-        registerForContextMenu(binding.menu)
+    }
+
+    /**
+     * Inicializa la fila del tablero
+     */
+    private fun inicializarFila(fila: TableRow): Array<TextView> {
+        val filaTexto = arrayListOf<TextView>()
+        //Agrega los recuadros
+        for (i in 0..4) {
+            //Crea el texto donde ira el numero
+            val textView = TextView(applicationContext)
+            textView.text = ""
+            textView.textSize = 24.0f
+            //Posición del texto
+            textView.gravity = Gravity.CENTER
+            //Establece el tamaño del textView
+            val parametros = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
+                TableRow.LayoutParams.MATCH_PARENT)
+            //Se establece para que se recorra uniformemente
+            parametros.weight = 1.0f
+            textView.layoutParams = parametros
+            //Establece un borde al fondo
+            textView.background = getDrawable(R.drawable.borde)
+            //Lo agrega a la vista del tablero
+            fila.addView(textView)
+            filaTexto.add(textView)
+        }
+        return filaTexto.toTypedArray()
     }
 
     /**
@@ -50,7 +87,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateContextMenu(
         menu: ContextMenu?,
         v: View?,
-        menuInfo: ContextMenu.ContextMenuInfo?
+        menuInfo: ContextMenu.ContextMenuInfo?,
     ) {
         super.onCreateContextMenu(menu, v, menuInfo)
         menu?.setHeaderTitle("Color de fondo")
@@ -127,5 +164,10 @@ class MainActivity : AppCompatActivity() {
      */
     fun lanzarDados(v: View) {
         juego.lanzarDados()
+        //Actualiza los puntajes
+        binding.puntaje.text = "Puntaje Total: ${juego.puntaje}"
+        binding.puntos.text = "Puntos: ${juego.puntos}"
     }
+
+
 }
