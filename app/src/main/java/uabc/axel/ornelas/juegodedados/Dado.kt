@@ -9,7 +9,6 @@ class Dado(private var cara: ImageView) {
             field = valor
             cara.setBackgroundColor(if (presionado) Color.RED else 0)
         }
-    //Puede que no se utilice el valor
     var valor: Int = 1
         private set(num) {
             field = num
@@ -18,10 +17,6 @@ class Dado(private var cara: ImageView) {
 
     init {
         cambiarImagen()
-        //Cada vez que se presiona el boton realiza la acción
-        cara.setOnClickListener {
-            presionarDado()
-        }
     }
 
     /**
@@ -53,6 +48,8 @@ class Dado(private var cara: ImageView) {
     fun valorDefecto() {
         valor = 1
         presionado = false
+        //Cada vez que se presiona el boton realiza la acción
+        cara.setOnClickListener { }
     }
 
     /**
@@ -60,5 +57,13 @@ class Dado(private var cara: ImageView) {
      */
     private fun presionarDado() {
         presionado = !presionado
+    }
+
+    fun primerLanzamiento() {
+        //Cada vez que se presiona el boton realiza la acción
+        cara.setOnClickListener {
+            presionarDado()
+        }
+        lanzarDado()
     }
 }
