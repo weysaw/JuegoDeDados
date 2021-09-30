@@ -4,32 +4,42 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ContextMenu
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
+import android.view.*
+import android.widget.*
 import uabc.axel.ornelas.juegodedados.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     //Se usa para acceder a los elementos
     private lateinit var binding: ActivityMainBinding
-    private lateinit var juego: JuegoDeDados
+    private lateinit var juego: Balut
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val texto = arrayListOf<TextView>()
+        //Agregar fours
+        for (i in 1..4) {
+            val textView = TextView(applicationContext)
+            textView.text = i.toString()
+            textView.textSize = 24.0f
+            textView.gravity = Gravity.CENTER
+            val parametros = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT)
+            parametros.weight = 1.0f
+            textView.layoutParams = parametros
+            textView.background = getDrawable(R.drawable.borde)
+            binding.foursTabla.addView(textView)
+            texto.add(textView)
+        }
         // Se asigna el arreglo de dados
-        val dados = arrayListOf(
+        val dados = arrayOf(
             Dado(binding.dado),
             Dado(binding.dado2),
             Dado(binding.dado3),
             Dado(binding.dado4),
-            Dado(binding.dado5),
-            Dado(binding.dado6)
+            Dado(binding.dado5)
         )
-        juego = JuegoDeDados(dados)
+        juego = Balut(dados)
         //Se agrega el fondo para que se cambia el fondo
         registerForContextMenu(binding.menu)
     }
@@ -118,7 +128,4 @@ class MainActivity : AppCompatActivity() {
     fun lanzarDados(v: View) {
         juego.lanzarDados()
     }
-
-
-
 }
