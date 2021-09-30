@@ -34,10 +34,23 @@ class MainActivity : AppCompatActivity() {
                 filaChoice,
                 filaBalut)
             juego = Balut(dados, tablero)
+            tablero.forEach { fila ->
+                fila.botonAccion.setOnClickListener {
+                    fila.calcularPuntajeFila()
+                    juego.reiniciarLanzamiento()
+                    juego.cambiarRonda()
+                    ronda.text = "Ronda: ${juego.rondaActual} / ${Balut.NUMERO_RONDAS}"
+                    tirar.isEnabled = true
+                    juego.calcularPuntajeTotal()
+                    puntaje.text = "Puntaje Total: ${juego.puntaje}"
+                    puntos.text = "Puntos: ${juego.puntos}"
+                }
+            }
         }
         //Se agrega el fondo para que se cambia el fondo
         registerForContextMenu(binding.menu)
     }
+
 
     /**
      *
@@ -167,6 +180,13 @@ class MainActivity : AppCompatActivity() {
         //Actualiza los puntajes
         binding.puntaje.text = "Puntaje Total: ${juego.puntaje}"
         binding.puntos.text = "Puntos: ${juego.puntos}"
+        binding.roll.text = "Roll: ${juego.lanzamientoActual} / ${Balut.LIM_LANZAMIENTOS}"
+        if (juego.limiteLanzamiento()) {
+            binding.tirar.isEnabled = false
+            Toast.makeText(applicationContext,
+                "Seleccione un botón de categoria",
+                Toast.LENGTH_SHORT).show()
+        }
     }
 
 
