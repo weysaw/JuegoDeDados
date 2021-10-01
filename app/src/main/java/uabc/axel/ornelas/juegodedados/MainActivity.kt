@@ -1,12 +1,15 @@
 package uabc.axel.ornelas.juegodedados
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.*
 import android.widget.*
 import uabc.axel.ornelas.juegodedados.databinding.ActivityMainBinding
+import uabc.axel.ornelas.juegodedados.databinding.ActivityTableroBinding
 
 class MainActivity : AppCompatActivity() {
     //Se usa para acceder a los elementos
@@ -18,36 +21,40 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val tablero = ArrayList<Fila>()
+        var categorias: Array<Array<View>>
         //Se obtienen las filas para mandarselos al juego de balut
-        with(binding) {
-            val categorias = arrayOf(
+        with(binding.tablero) {
+            categorias = arrayOf(
                 arrayOf(foursTabla, foursBtn),
                 arrayOf(fivesTabla, fivesBtn),
                 arrayOf(sixesTabla, sixesBtn),
                 arrayOf(straightTabla, straightBtn),
                 arrayOf(fullHouseTabla, fullHouseBtn),
                 arrayOf(choiceTabla, choiceBtn),
-                arrayOf(balutTabla, balutBtn),
+                arrayOf(balutTabla, balutBtn)
             )
-            categorias.forEach { categoria ->
-                //Se obtiene el primer dato
-                val filaTexto: ArrayList<TextView> = inicializarFila(categoria[0] as TableRow)
-                //Se obtiene el segundo dato
-                val puntajeTotalTexto: TextView = filaTexto.removeLast()
-                //Se crea el objeto de la fila
-                val fila = Fila(filaTexto.toTypedArray(), categoria[1] as Button, puntajeTotalTexto)
-                //Agrega la fila al tablero
-                tablero.add(fila)
-            }
-            //Se obtiene las imagenes de los dados
-            val dados = inicializarImagenes()
-            //Se crea el juego se mandan los dados y el tablero
-            juego = Balut(dados, tablero.toTypedArray())
         }
+        categorias.forEach { categoria ->
+            //Se obtiene el primer dato
+            val filaTexto: ArrayList<TextView> = inicializarFila(categoria[0] as TableRow)
+            //Se obtiene el segundo dato
+            val puntajeTotalTexto: TextView = filaTexto.removeLast()
+            //Se crea el objeto de la fila
+            val fila = Fila(filaTexto.toTypedArray(), categoria[1] as Button, puntajeTotalTexto)
+            //Agrega la fila al tablero
+            tablero.add(fila)
+        }
+
+        //Se obtiene las imagenes de los dados
+        val dados = inicializarImagenes()
+        //Se crea el juego se mandan los dados y el tablero
+        juego = Balut(dados, tablero.toTypedArray())
+
         inicializarDatoPresion(tablero)
         //Se agrega el fondo para que se cambia el fondo
         registerForContextMenu(binding.menu)
     }
+
 
     private fun inicializarDatoPresion(tablero: ArrayList<Fila>) {
         //Se recorre por el tablero accinando la acción de cada boton
