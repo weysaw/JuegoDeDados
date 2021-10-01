@@ -2,6 +2,7 @@ package uabc.axel.ornelas.juegodedados
 
 import android.graphics.Color
 import android.widget.Toast
+import java.lang.NumberFormatException
 
 /**
  * Representa al juego de dados balut
@@ -9,7 +10,10 @@ import android.widget.Toast
  * https://balutgame.com/play/
  * http://www.mathcs.emory.edu/~cheung/Courses/170/Syllabus/10/pokerCheck.html
  */
-class Balut(private val dados: Array<Dado>, private val tablero: Array<Fila>) {
+class Balut(
+    private val dados: Array<Dado>,
+    private val tablero: Array<Fila>,
+) {
     companion object {
         const val NUMERO_RONDAS = 28
         const val LIM_LANZAMIENTOS = 3
@@ -32,6 +36,7 @@ class Balut(private val dados: Array<Dado>, private val tablero: Array<Fila>) {
 
     var lanzamientoActual: Int = 0
         private set
+
     // Ronda que determina cuando se termina el juego
     var rondaActual = 1
         private set
@@ -51,15 +56,6 @@ class Balut(private val dados: Array<Dado>, private val tablero: Array<Fila>) {
     }
 
     /**
-     *
-     */
-    private fun valorDefectoDados() {
-        dados.forEach {
-            it.valorDefecto()
-        }
-    }
-
-    /**
      * Reinicia el lanzamiento a su estado inicial
      */
     fun reiniciarLanzamiento() {
@@ -67,14 +63,16 @@ class Balut(private val dados: Array<Dado>, private val tablero: Array<Fila>) {
     }
 
     /**
-     *
+     * Cambia a la siguiente ronda, desactiva todos los botones y devuelve los dados a su estado
+     * inicial
      */
     fun cambiarRonda() {
         rondaActual++
         valorDefectoDados()
         tablero.forEach { fila ->
             fila.botonAccion.isEnabled = false
-            fila.puntajes[fila.nJugada].text = ""
+            if (fila.nJugada < 4)
+                fila.puntajes[fila.nJugada].text = ""
         }
     }
 
@@ -82,14 +80,17 @@ class Balut(private val dados: Array<Dado>, private val tablero: Array<Fila>) {
      * Lanza todos los dados del juego
      */
     fun lanzarDados() {
-        if (rondaActual >= NUMERO_RONDAS)
+        if (esFinDelJuego()) {
             return
+        }
         if (limiteLanzamiento())
             return
         dados.forEach {
             if (lanzamientoActual == 0) {
-                for (fila in tablero)
-                    fila.botonAccion.isEnabled = true
+                tablero.forEach { fila ->
+                    if (fila.nJugada < 4)
+                        fila.botonAccion.isEnabled = true
+                }
                 it.primerLanzamiento()
             }
             //Si el cuadro esta presionado no se lanza de nuevo
@@ -101,11 +102,61 @@ class Balut(private val dados: Array<Dado>, private val tablero: Array<Fila>) {
     }
 
     /**
-     *
+     * Determina si ya es el final del juego
+     */
+    fun esFinDelJuego(): Boolean {
+        return rondaActual >= NUMERO_RONDAS
+    }
+
+    /**
+     * Determina si el lanzamiento actual es el limite
      */
     fun limiteLanzamiento(): Boolean {
         return lanzamientoActual >= LIM_LANZAMIENTOS
     }
+
+    /**
+     * Suma todas la puntuaciones totales y calcula los puntos
+     */
+    fun calcularPuntajeTotal() {
+        puntaje = tablero.sumOf { fila -> fila.puntajeFila }
+    }
+
+    /**
+     *
+     */
+    fun calcularPuntos() {
+        val puntosFours: Int = if (tablero[FOURS].puntajeFila >= 52) 2 else 0
+        val puntosFives: Int = if (tablero[FIVES].puntajeFila >= 65) 2 else 0
+        val puntosSixes: Int = if (tablero[SIXES].puntajeFila >= 78) 2 else 0
+        val puntosStraight: Int = if (tablero[STRAIGHT].puntajes.all { cuadro ->
+                val texto = cuadro.text
+                texto != "" && texto != "/"
+            }) 4 else 0
+        val puntosFullHouse: Int = if (tablero[FULLHOUSE].puntajes.all { cuadro ->
+                val texto = cuadro.text
+                texto != "" && texto != "/"
+            }) 3 else 0
+        val puntosChoice: Int = if (tablero[CHOICE].puntajeFila >= 100) 2 else 0
+        val puntosBalut: Int = tablero[BALUT].puntajes.sumOf {
+            var suma = 0
+            if (it.text != "" && it.text != "/")
+                suma = 2
+            suma
+        }
+        puntos = puntosFours + puntosFives + puntosSixes + puntosStraight +
+                puntosChoice + puntosFullHouse + puntosBalut
+    }
+
+    /**
+     * Coloca a los dados a su valor inicial de 1
+     */
+    private fun valorDefectoDados() {
+        dados.forEach {
+            it.valorDefecto()
+        }
+    }
+
     /**
      * Verifica la jugada de cada categoria
      */
@@ -172,6 +223,9 @@ class Balut(private val dados: Array<Dado>, private val tablero: Array<Fila>) {
     private fun verificarFullHouse(): Boolean {
         var esFullHouse = false
         val fila: Fila = tablero[FULLHOUSE]
+        // Si esta lleno la fila, no tiene caso seguir revisando
+        if (fila.nJugada >= 4)
+            return false
         //Se reinicia el puntaje de la ronda
         fila.puntajeRonda = 0
         //Se obtiene el 1er valor, para determinar sus coincidencias
@@ -243,7 +297,7 @@ class Balut(private val dados: Array<Dado>, private val tablero: Array<Fila>) {
     }
 
     /**
-     *
+     * Determina el puntaje por cada fila
      */
     private fun determinarPuntaje(fila: Fila) {
         var texto: String = fila.puntajeRonda.toString()
@@ -254,20 +308,6 @@ class Balut(private val dados: Array<Dado>, private val tablero: Array<Fila>) {
         val puntajeTexto = fila.puntajes[fila.nJugada]
         puntajeTexto.setTextColor(Color.RED)
         puntajeTexto.text = texto
-    }
-
-    /**
-     *
-     */
-    private fun criterioPuntos() {
-
-    }
-
-    /**
-     * Suma todas la puntuaciones totales
-     */
-    fun calcularPuntajeTotal() {
-        puntaje = tablero.sumOf { fila -> fila.puntajeFila }
     }
 
 

@@ -4,7 +4,11 @@ import android.graphics.Color
 import android.widget.Button
 import android.widget.TextView
 
-class Fila(val puntajes: Array<TextView>, val botonAccion: Button) {
+class Fila(
+    val puntajes: Array<TextView>,
+    val botonAccion: Button,
+    private val puntajeTextoFila: TextView,
+) {
     var nJugada: Int = 0
 
     //Puntaje que se puede realizar para la ronda
@@ -12,8 +16,10 @@ class Fila(val puntajes: Array<TextView>, val botonAccion: Button) {
 
     var puntajeFila: Int = 0
         private set
+
+
     init {
-        puntajes[puntajes.lastIndex].setTextColor(Color.MAGENTA)
+        puntajeTextoFila.setTextColor(Color.MAGENTA)
     }
 
     /**
@@ -24,18 +30,17 @@ class Fila(val puntajes: Array<TextView>, val botonAccion: Button) {
         val puntajeTexto = puntajes[nJugada]
         // Obtengo el texto del puntaje
         val texto = puntajeTexto.text.toString()
-        //Sumo el puntaje de la fila con el nuevo
-        puntajeFila += if (texto == "" || texto == "/") 0 else texto.toInt()
-        puntajeTexto.setTextColor(Color.BLUE)
         //Si la jugada no tiene valor se le pone un palo
-        if (puntajeTexto.text == "")
-            puntajeTexto.text = "/"
+        if (texto == "") puntajeTexto.text = "/" else puntajeFila += texto.toInt()
+        //Sumo el puntaje de la fila con el nuevo
+        puntajeTexto.setTextColor(Color.BLUE)
         //Pone el resultado total de la suma al final
-        puntajes[puntajes.lastIndex].text = puntajeFila.toString()
+        puntajeTextoFila.text = puntajeFila.toString()
         // Se desactiva el boton
         botonAccion.isEnabled = false
         //Se empieza de nuevo la ronda
         puntajeRonda = 0
+        //puntajeFila = 100
         // Se incrementa la jugada
         nJugada++
     }
@@ -47,8 +52,11 @@ class Fila(val puntajes: Array<TextView>, val botonAccion: Button) {
         nJugada = 0
         puntajeRonda = 0
         puntajeFila = 0
-        for (puntaje in puntajes)
+        puntajes.forEach { puntaje ->
             puntaje.text = ""
+        }
+        puntajeTextoFila.text = ""
+        botonAccion.isEnabled = false
     }
 
 }

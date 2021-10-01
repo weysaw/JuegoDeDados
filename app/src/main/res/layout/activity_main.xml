@@ -103,7 +103,8 @@
         app:layout_constraintEnd_toEndOf="@+id/ronda"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ronda"
-        app:layout_constraintTop_toTopOf="@+id/puntaje" />
+        app:layout_constraintTop_toTopOf="@+id/puntaje"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/puntaje"
@@ -113,7 +114,6 @@
         android:text="Puntaje Total: "
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/roll"
-        app:layout_constraintEnd_toEndOf="@+id/foursBtn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tirar" />
@@ -127,127 +127,110 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/roll"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/roll"
-        app:layout_constraintTop_toTopOf="@+id/roll" />
+        app:layout_constraintTop_toTopOf="@+id/roll"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/foursBtn"
+    <TextView
+        android:id="@+id/roll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:enabled="false"
-        android:text="fours"
-        app:layout_constraintBottom_toTopOf="@+id/fivesBtn"
-        app:layout_constraintEnd_toEndOf="@+id/fivesBtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fivesBtn" />
-
-    <Button
-        android:id="@+id/fivesBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:enabled="false"
-        android:text="Fives"
-        app:layout_constraintBottom_toTopOf="@+id/sixesBtn"
-        app:layout_constraintEnd_toEndOf="@+id/sixesBtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/sixesBtn" />
-
-    <Button
-        android:id="@+id/sixesBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="sixes"
-        app:layout_constraintBottom_toTopOf="@+id/straightBtn"
-        app:layout_constraintEnd_toEndOf="@+id/straightBtn"
-        app:layout_constraintStart_toStartOf="@+id/straightBtn" />
-
-    <Button
-        android:id="@+id/straightBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Straight"
-        app:layout_constraintBottom_toTopOf="@+id/fullHouseBtn"
-        app:layout_constraintStart_toStartOf="@+id/fullHouseBtn" />
-
-    <Button
-        android:id="@+id/fullHouseBtn"
-        android:layout_width="107dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="8dp"
-        android:enabled="false"
-        android:text="Full House"
-        app:layout_constraintBottom_toTopOf="@+id/choiceBtn"
-        app:layout_constraintEnd_toEndOf="@+id/choiceBtn"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="@+id/choiceBtn" />
-
-    <Button
-        android:id="@+id/choiceBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:enabled="false"
-        android:text="Choice"
-        app:layout_constraintBottom_toTopOf="@+id/balutBtn"
-        app:layout_constraintEnd_toEndOf="@+id/balutBtn"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/balutBtn" />
-
-    <Button
-        android:id="@+id/balutBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="Balut"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tablero"
-        app:layout_constraintHorizontal_bias="0.457"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="Roll:  / 3"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/tablero"
+        app:layout_constraintEnd_toStartOf="@+id/ronda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/puntaje" />
 
     <TableLayout
         android:id="@+id/tablero"
-        android:layout_width="290dp"
-        android:layout_height="364dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/straightBtn"
-        app:layout_constraintTop_toBottomOf="@+id/puntos"
-        app:layout_constraintVertical_bias="0.9">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ronda">
 
         <TableRow
             android:id="@+id/foursTabla"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/foursBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:enabled="false"
+                android:text="fours"
+                android:textSize="12sp" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/fivesTabla"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/fivesBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:enabled="false"
+                android:text="Fives"
+                android:textSize="12sp" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/sixesTabla"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/sixesBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:enabled="false"
+                android:text="sixes"
+                android:textSize="12sp" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/straightTabla"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/straightBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:enabled="false"
+                android:text="Straight"
+                android:textSize="12sp" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/fullHouseTabla"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/fullHouseBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:enabled="false"
+                android:text="Full House"
+                android:textSize="12sp" />
+        </TableRow>
 
         <TableRow
             android:id="@+id/choiceTabla"
@@ -255,27 +238,32 @@
             android:layout_height="match_parent"
             android:layout_weight="1">
 
+            <Button
+                android:id="@+id/choiceBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:enabled="false"
+                android:text="Choice"
+                android:textSize="12sp" />
         </TableRow>
 
         <TableRow
             android:id="@+id/balutTabla"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/balutBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:enabled="false"
+                android:text="Balut"
+                android:textSize="12sp" />
+        </TableRow>
 
     </TableLayout>
-
-    <TextView
-        android:id="@+id/roll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="4dp"
-        android:text="Roll:  / 3"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/foursBtn"
-        app:layout_constraintEnd_toEndOf="@+id/foursBtn"
-        app:layout_constraintStart_toStartOf="@+id/foursBtn"
-        app:layout_constraintTop_toBottomOf="@+id/puntaje" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
