@@ -22,8 +22,8 @@
 
     <ImageView
         android:id="@+id/dado1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/dado2"
         app:layout_constraintEnd_toStartOf="@+id/dado2"
@@ -34,8 +34,8 @@
 
     <ImageView
         android:id="@+id/dado2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="23dp"
         android:layout_marginEnd="40dp"
         app:layout_constraintBottom_toBottomOf="@+id/dado3"
@@ -46,8 +46,8 @@
 
     <ImageView
         android:id="@+id/dado3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="7dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/tirar"
@@ -57,8 +57,8 @@
 
     <ImageView
         android:id="@+id/dado4"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/dado3"
         app:layout_constraintEnd_toStartOf="@+id/dado5"
@@ -68,8 +68,8 @@
 
     <ImageView
         android:id="@+id/dado5"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toBottomOf="@+id/dado4"
@@ -86,7 +86,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="12dp"
         android:onClick="lanzarDados"
-        android:text="Tirar Dado"
+        android:text="Tirar Los Dados"
         app:layout_constraintBottom_toTopOf="@+id/puntaje"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
@@ -144,11 +144,12 @@
 
     <include
         android:id="@+id/tablero"
-        layout="@layout/activity_tablero"
-        android:layout_width="422dp"
-        android:layout_height="339dp"
+        layout="@layout/tablero"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roll"
-        tools:layout_editor_absoluteX="-11dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roll" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
