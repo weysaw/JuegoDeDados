@@ -4,7 +4,7 @@ import android.graphics.Color
 import android.widget.Button
 import android.widget.TextView
 
-class Fila(
+class FilaTablero(
     val puntajes: Array<TextView>,
     val botonAccion: Button,
     private val puntajeTextoFila: TextView,
@@ -14,9 +14,10 @@ class Fila(
     //Puntaje que se puede realizar para la ronda
     var puntajeRonda: Int = 0
 
+    //Puntaje Fila
     var puntajeFila: Int = 0
         private set
-
+    var puntosFila: Int = 0
 
     init {
         puntajeTextoFila.setTextColor(Color.MAGENTA)
@@ -28,19 +29,20 @@ class Fila(
     fun calcularPuntajeFila() {
         //Obtengo el número de la jugada actual
         val puntajeTexto = puntajes[nJugada]
+        //Cambio el color del texto puesto
+        puntajeTexto.setTextColor(Color.DKGRAY)
         // Obtengo el texto del puntaje
         val texto = puntajeTexto.text.toString()
-        //Si la jugada no tiene valor se le pone un palo
-        if (texto == "") puntajeTexto.text = "/" else puntajeFila += texto.toInt()
-        //Sumo el puntaje de la fila con el nuevo
-        puntajeTexto.setTextColor(Color.BLUE)
+        if (texto == "")
+            puntajeTexto.text = "/" //Si la jugada no tiene valor se le pone un palo
+        else
+            puntajeFila += texto.toInt() //Sumo el puntaje de la fila con el nuevo
         //Pone el resultado total de la suma al final
         puntajeTextoFila.text = puntajeFila.toString()
         // Se desactiva el boton
         botonAccion.isEnabled = false
         //Se empieza de nuevo la ronda
         puntajeRonda = 0
-        //puntajeFila = 100
         // Se incrementa la jugada
         nJugada++
     }
