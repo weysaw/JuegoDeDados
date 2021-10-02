@@ -4,9 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/drawable/borde.xml" value="0.3765625" />
-        <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/activity_main.xml" value="0.5" />
+        <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/activity_historial_puntuaciones.xml" value="0.32019927536231885" />
+        <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/activity_reglas.xml" value="0.3197463768115942" />
-        <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/activity_tablero.xml" value="0.32563405797101447" />
+        <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/activity_sobre.xml" value="0.2907608695652174" />
+        <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/activity_tablero.xml" value="0.25" />
+        <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/fila_tablero.xml" value="0.32019927536231885" />
+        <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/tabla.xml" value="0.32019927536231885" />
         <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/tablero.xml" value="0.32563405797101447" />
         <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/layout/xd.xml" value="0.32563405797101447" />
         <entry key="..\:/Directorios/Documentos/Android-Proyectos/JuegoDeDados/app/src/main/res/menu/color_fondo.xml" value="0.35625" />
