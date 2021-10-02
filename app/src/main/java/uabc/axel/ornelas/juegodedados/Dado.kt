@@ -2,7 +2,12 @@ package uabc.axel.ornelas.juegodedados
 
 import android.graphics.Color
 import android.widget.ImageView
-
+/**
+ * Lógica que contiene un dado
+ *
+ * @author Ornelas M Axel L
+ * @version 02.10.2021
+ */
 class Dado(private var cara: ImageView) {
     var presionado = false
        private set(valor) {

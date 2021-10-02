@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:enabled="false"
-            android:text="fours"
+            android:text="Fours"
             android:textSize="12sp" />
     </TableRow>
 
@@ -47,7 +47,7 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:enabled="false"
-            android:text="sixes"
+            android:text="Sixes"
             android:textSize="12sp" />
     </TableRow>
 

@@ -16,7 +16,14 @@
     <item
         android:id="@+id/reiniciar"
         android:title="Reiniciar Juego" />
-    <item
-        android:id="@+id/sobre"
-        android:title="Sobre el juego" />
+    <item android:title="Información">
+        <menu>
+            <item
+                android:id="@+id/sobre"
+                android:title="Sobre el juego" />
+            <item
+                android:id="@+id/limpiar"
+                android:title="Limpiar Record" />
+        </menu>
+    </item>
 </menu>
