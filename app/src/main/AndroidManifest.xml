@@ -10,10 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JuegoDeDados">
         <activity
-            android:name=".Tablero"
-            android:exported="true"
-            android:label="@string/title_activity_tablero"
-            android:theme="@style/Theme.JuegoDeDados.NoActionBar" />
+            android:name=".Sobre"
+            android:exported="true" />
+        <activity
+            android:name=".HistorialPuntuaciones"
+            android:exported="true" />
         <activity
             android:name=".Reglas"
             android:exported="true" />
