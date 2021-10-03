@@ -4,14 +4,12 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.*
 import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
 import uabc.axel.ornelas.juegodedados.databinding.ActivityMainBinding
 import java.io.FileNotFoundException
-import java.lang.Exception
-import java.lang.NumberFormatException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -122,7 +120,8 @@ class MainActivity : AppCompatActivity() {
                 } else if (juego.puntaje == puntajeRecord && juego.puntos > puntosRecord) {
                     mejorPuntaje = true
                 }
-            }
+            } else
+                mejorPuntaje = true
         } catch (e: Exception) {
             when (e) {
                 is NumberFormatException, is FileNotFoundException -> mejorPuntaje = true
