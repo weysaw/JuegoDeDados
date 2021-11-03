@@ -3,7 +3,7 @@ package uabc.axel.ornelas.juegodedados
 import android.content.pm.PackageInfo
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import uabc.axel.ornelas.juegodedados.databinding.ActivitySobreBinding
+import uabc.axel.ornelas.juegodedados.databinding.ActivityAboutBinding
 import java.io.FileNotFoundException
 
 /**
@@ -12,13 +12,13 @@ import java.io.FileNotFoundException
  * @author Ornelas M Axel L
  * @version 02.10.2021
  */
-class Sobre : AppCompatActivity() {
+class About : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySobreBinding
+    private lateinit var binding: ActivityAboutBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySobreBinding.inflate(layoutInflater)
+        binding = ActivityAboutBinding.inflate(layoutInflater)
         setContentView(binding.root)
         obtenerInformacion()
     }
