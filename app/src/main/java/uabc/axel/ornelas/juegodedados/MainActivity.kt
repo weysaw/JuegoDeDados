@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.*
+import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import uabc.axel.ornelas.juegodedados.databinding.ActivityMainBinding
@@ -17,13 +19,15 @@ import kotlin.collections.ArrayList
  * Actividad principal donde se muestra la interfaz
  *
  * @author Ornelas M Axel L
- * @version 02.10.2021
+ * @version 03.11.2021
  */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var juego: Balut
     private val tablero = ArrayList<FilaTablero>()
+    private val sonidosDados = arrayListOf(R.raw.sonido_dado1, R.raw.sonido_dado2)
+    private lateinit var dadosImg: Array<Dado>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,9 +58,9 @@ class MainActivity : AppCompatActivity() {
             tablero.add(fila)
         }
         //Se obtiene las imagenes de los dados
-        val dados = inicializarImagenes()
+        inicializarImagenes()
         //Se crea el juego se mandan los dados y el tablero
-        juego = Balut(dados, tablero.toTypedArray())
+        juego = Balut(dadosImg, tablero.toTypedArray(), this)
         inicializarPresionDado()
         //Se agrega el fondo para que se cambia el fondo
         registerForContextMenu(binding.menu)
@@ -64,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun inicializarPresionDado() {
-        //Se recorre por el tablero accinando la acción de cada boton
+        //Se recorre por el tablero accionando la acción de cada boton
         tablero.forEach { fila ->
             fila.botonAccion.setOnClickListener {
                 fila.calcularPuntajeFila()
@@ -75,9 +79,11 @@ class MainActivity : AppCompatActivity() {
                 juego.cambiarRonda()
                 //Verifica si es la ultima ronda para mostrarlo al jugador
                 if (juego.esFinDelJuego()) {
-                    Toast.makeText(applicationContext,
+                    Toast.makeText(
+                        applicationContext,
                         "Presione reiniciar si quiere jugar de nuevo",
-                        Toast.LENGTH_SHORT).show()
+                        Toast.LENGTH_SHORT
+                    ).show()
                     //Se desactiva el boton
                     binding.tirar.isEnabled = false
                     binding.puntaje.text = "Puntaje Total: ${juego.puntaje}"
@@ -132,9 +138,11 @@ class MainActivity : AppCompatActivity() {
         if (mejorPuntaje) {
             //Contenido para el archivo
             val contenido = "${juego.puntaje},${juego.puntos},${Date()}"
-            Toast.makeText(applicationContext,
+            Toast.makeText(
+                applicationContext,
                 "Nuevo record Registrado",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
             //Escribe el contenido en el archivo
             applicationContext.openFileOutput(filename, Context.MODE_PRIVATE)
                 .use {
@@ -159,9 +167,9 @@ class MainActivity : AppCompatActivity() {
     /**
      * Inicializa las imagenes de los dados y los devuelve como un arreglo
      */
-    private fun inicializarImagenes(): Array<Dado> {
+    private fun inicializarImagenes() {
         // Se asigna el arreglo de dados
-        return arrayOf(
+        dadosImg = arrayOf(
             Dado(binding.dado1),
             Dado(binding.dado2),
             Dado(binding.dado3),
@@ -184,13 +192,17 @@ class MainActivity : AppCompatActivity() {
             //Posición del texto
             textView.gravity = Gravity.CENTER
             //Establece el tamaño del textView
-            val parametros = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                TableRow.LayoutParams.MATCH_PARENT)
+            val parametros = TableRow.LayoutParams(
+                TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.MATCH_PARENT
+            )
             //Se establece para que se recorra uniformemente
             parametros.weight = 1.0f
+            val margen = 5
+            parametros.setMargins(margen, margen, margen, margen)
             textView.layoutParams = parametros
             //Establece un borde al fondo
-            textView.background = getDrawable(R.drawable.borde)
+            textView.background = getDrawable(R.color.naranja)
             //Lo agrega a la vista del tablero
             fila.addView(textView)
             filaTexto.add(textView)
@@ -266,9 +278,13 @@ class MainActivity : AppCompatActivity() {
                     filaTexto.add(fila.puntosFila.toString())
                     informacion.add(filaTexto)
                 }
-                informacion.add(arrayListOf("", "", "", "", "",
-                    juego.puntaje.toString(),
-                    juego.puntos.toString()))
+                informacion.add(
+                    arrayListOf(
+                        "", "", "", "", "",
+                        juego.puntaje.toString(),
+                        juego.puntos.toString()
+                    )
+                )
                 intent.putExtra("tablero", informacion)
                 startActivity(intent)
                 true
@@ -282,7 +298,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.sobre -> {
                 Toast.makeText(this, "Se ha seleccionado sobre el juego", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(applicationContext, Sobre::class.java))
+                startActivity(Intent(applicationContext, About::class.java))
                 true
             }
             R.id.limpiar -> {
@@ -301,13 +317,28 @@ class MainActivity : AppCompatActivity() {
      * Lanza los dados que esten seleccionados
      */
     fun lanzarDados(v: View) {
+        MediaPlayer.create(this, sonidosDados.random()).start()
+        animacionDados()
         juego.lanzarDados()
         actualizarTextos()
+
         if (juego.limiteLanzamiento()) {
             binding.tirar.isEnabled = false
-            Toast.makeText(applicationContext,
+            Toast.makeText(
+                applicationContext,
                 "Seleccione un botón de categoria",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
+    /**
+     * Animación cuando se lanzan los dados
+     */
+    private fun animacionDados() {
+        val animacion = AnimationUtils.loadAnimation(this, R.anim.rotate)
+        dadosImg.forEach {
+            it.cara.startAnimation(animacion)
         }
     }
 }
