@@ -8,7 +8,7 @@ import android.widget.TextView
  * Contiene como se comporta la fila del balut
  *
  * @author Ornelas M Axel L
- * @version 02.10.2021
+ * @version 03.11.2021
  */
 class FilaTablero(
     val puntajes: Array<TextView>,
@@ -26,7 +26,7 @@ class FilaTablero(
     var puntosFila: Int = 0
 
     init {
-        puntajeTextoFila.setTextColor(Color.MAGENTA)
+        puntajeTextoFila.setTextColor(Color.BLUE)
     }
 
     /**
