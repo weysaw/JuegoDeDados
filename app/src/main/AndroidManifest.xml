@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JuegoDeDados">
         <activity
-            android:name=".Sobre"
+            android:name=".About"
             android:exported="true" />
         <activity
             android:name=".HistorialPuntuaciones"

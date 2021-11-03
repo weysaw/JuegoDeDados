@@ -1,5 +1,7 @@
 package uabc.axel.ornelas.juegodedados
 
+import android.app.AlertDialog
+import android.content.Context
 import android.graphics.Color
 
 /**
@@ -13,6 +15,7 @@ import android.graphics.Color
 class Balut(
     private val dados: Array<Dado>,
     private val tablero: Array<FilaTablero>,
+    private val context: Context
 ) {
     companion object {
         const val NUMERO_RONDAS = 28
@@ -171,9 +174,7 @@ class Balut(
      * Coloca a los dados a su valor inicial de 1
      */
     private fun valorDefectoDados() {
-        dados.forEach {
-            it.valorDefecto()
-        }
+        dados.forEach { it.valorDefecto() }
     }
 
     /**
@@ -312,7 +313,16 @@ class Balut(
         //Si el valor del dado es igual al del primer dado, significa que hay balut
         val esBalut = dados.all { dado -> dado.valor == valor }
         //Si todos los dados son el mismo valor, es un balut
-        if (esBalut) fila.puntajeRonda = valor * 5 + 20
+        if (esBalut) {
+            fila.puntajeRonda = valor * 5 + 20
+            AlertDialog.Builder(context)
+                .setTitle("¡¡BALUT!!")
+                .setMessage("HA SALIDO UN BALUT APROVECHALO")
+                .setPositiveButton("OK") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create().show()
+        }
         determinarPuntaje(fila)
         return esBalut
     }
@@ -327,7 +337,7 @@ class Balut(
             texto = ""
         //Posición de la jugada por la fila
         val puntajeTexto = filaTablero.puntajes[filaTablero.nJugada]
-        puntajeTexto.setTextColor(Color.RED)
+        puntajeTexto.setTextColor(Color.WHITE)
         puntajeTexto.text = texto
     }
 }
