@@ -20,6 +20,7 @@
             android:gravity="center"
             android:text="Reglas para jugar Balut"
             android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
@@ -50,7 +51,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Objetivo"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView8"
@@ -67,7 +69,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Tirar los dados"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView12"
@@ -83,7 +86,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Puntaje"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView16"
@@ -99,7 +103,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Fours, Fives y Sixes"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView23"
@@ -115,7 +120,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Straights"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView29"
@@ -131,7 +137,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Full House"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView28"
@@ -147,7 +154,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Choice"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView30"
@@ -163,7 +171,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Balut"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView31"
@@ -179,7 +188,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Puntos"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView32"
